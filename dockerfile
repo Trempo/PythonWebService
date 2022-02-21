@@ -12,10 +12,13 @@ RUN ls
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+RUN chown -R www-data:www-data
 
-CMD [ "python", "-m gunicorn PythonWebService.wsgi " ]
+RUN pip list
+
+COPY . .
 
 # start server
 EXPOSE 80
 STOPSIGNAL SIGTERM
+CMD ["./runscript.sh"]
