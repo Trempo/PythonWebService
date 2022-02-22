@@ -2,6 +2,8 @@ FROM python:3.9
 
 RUN apt-get update && apt-get install vim -y --no-install-recommends
 
+RUN apt install gnupg && gpg --version | grep Home
+
 RUN apt install git
 
 RUN git clone https://github.com/Trempo/PythonWebService.git
