@@ -1,4 +1,4 @@
-FROM python:3.9 as base
+FROM python:3.9
 
 RUN apt-get update && apt-get install vim -y --no-install-recommends
 
@@ -18,12 +18,10 @@ RUN pip list
 
 COPY . .
 
+RUN chmod +x run_tests.sh
+
 # start server
-FROM base as run
 EXPOSE 80
 STOPSIGNAL SIGTERM
-CMD gunicorn -b 0.0.0.0:80  PythonWebService.wsgi
+CMD gunicorn -b :80  PythonWebService.wsgi
 
-
-FROM base as test
-CMD chmod +x run_test.sh; ./run_test.sh
