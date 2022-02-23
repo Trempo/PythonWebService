@@ -8,7 +8,7 @@ import string
 
 from GPGDecrypt.logic import decryptUtil
 
-gpg = gnupg.GPG(gnupghome='/home/felipebedoya/.gnupg', verbose=True)
+gpg = gnupg.GPG(gnupghome='/root/.gnupg', verbose=True)
 input_data = gpg.gen_key_input(
     name_email='felipebedoya@protonmail.com',
     passphrase='my passphrase')
